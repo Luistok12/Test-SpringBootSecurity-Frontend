@@ -6,7 +6,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-// import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
@@ -42,20 +41,18 @@ public class User {
     private Date fechaModificacion;
 
     @ManyToOne
-    @JoinColumn(name = "rol_id")
+    @JoinColumn(name = "roles_id")
     private Rol rol;
 
     public User() {
-        this.nombre = "";
-        this.email = "";
-        this.saldo = 0.0;
     }
 
-    public User(String nombre, String email, double saldo) {
-        this.nombre = nombre;
-        this.email = email;
-        this.saldo = saldo;
-    }
+    // No es necesario este constructor, cualquier cosa descomentar si es que no funciona algun delete o put
+    // public User(String nombre, String email, double saldo) {
+    //     this.nombre = nombre;
+    //     this.email = email;
+    //     this.saldo = saldo;
+    // }
 
     public Long getId() {
         return this.id;
